@@ -1,7 +1,9 @@
 CFLAGS:=-O0 -g
 
+all: vanilla vanilla.bc vanilla.json safe epcg
+
 vanilla: main.c lib.c
-	clang -O0 -g main.c lib.c -o vanilla
+	clang -O0 -g lib.c main.c -o vanilla
 
 vanilla.bc: main.c lib.c
 	~/node_modules/llvm-14.0.0.obj/bin/clang-14 $(CFLAGS) -emit-llvm -c main.c -o main.bc
@@ -13,7 +15,7 @@ vanilla.json: vanilla.bc
 	~/objenc/pcggen/build/objenc ./vanilla.bc vanilla.json
 
 safe: main.c lib.c
-	~/storage/lava/llvm-lava/build/bin/clang-12 $(CFLAGS) main.c lib.c -o safe -lmemorizer
+	~/storage/lava/llvm-lava/build/bin/clang-12 $(CFLAGS) lib.c main.c -o safe -lmemorizer
 
 epcg: safe vanilla.json
 	~/objenc/analysis/parse_perm.py --bin safe --pcg vanilla.json --embed-inplace
