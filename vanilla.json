@@ -1,78 +1,62 @@
 {
 	"alias" : 
 	{
-		"17" : 
+		"123" : 
+		[
+			"temp",
+			"request::p"
+		],
+		"126" : 
+		[
+			"key"
+		],
+		"15" : 
+		[
+			"main::main"
+		],
+		"23" : 
 		[
 			"main::argc"
 		],
-		"19" : 
+		"25" : 
 		[
 			"main::argv"
 		],
-		"34" : 
+		"29" : 
 		[
-			"main::req",
-			"request::data",
-			"strdup::LAVA_RETURN_SYM"
-		],
-		"36" : 
-		[
-			"strdup::strdup"
+			"main::i"
 		],
 		"41" : 
 		[
-			"request::request"
-		],
-		"65" : 
-		[
-			"request::buffer",
-			"request::p",
-			"malloc::LAVA_RETURN_SYM"
-		],
-		"68" : 
-		[
 			"malloc::malloc"
 		],
-		"72" : 
+		"67" : 
 		[
-			"request::password",
+			"main::req",
+			"request::data",
 			"malloc::LAVA_RETURN_SYM"
 		],
-		"80" : 
+		"71" : 
+		[
+			"request::request"
+		],
+		"93" : 
 		[
 			"printf::printf"
 		],
-		"85" : 
+		"98" : 
 		[
 			"strcpy::strcpy"
-		],
-		"9" : 
-		[
-			"main::main"
 		]
 	},
 	"allocs" : 
 	[
 		{
-			"alias" : 72,
-			"file" : "/home/yudi/RPD/lib.c",
-			"func" : "request",
-			"line" : 7,
-			"name" : "malloc"
-		},
-		{
-			"alias" : 65,
-			"file" : "/home/yudi/RPD/lib.c",
-			"func" : "request",
-			"line" : 6,
-			"name" : "malloc"
-		},
-		{
-			"alias" : 34,
+			"alias" : 67,
 			"file" : "/home/yudi/RPD/main.c",
 			"func" : "main",
-			"line" : 7,
-			"name" : "strdup"
+			"line" : 9,
+			"name" : "malloc"
 		}
 	],
 	"fns" : 
@@ -81,20 +65,36 @@
 		{
 			"Gro" : null,
 			"Grw" : null,
-			"alias" : 9,
+			"alias" : 15,
 			"calls" : 
 			[
-				"strdup",
+				"malloc",
 				"request"
 			],
 			"file" : "/home/yudi/RPD/main.c",
 			"locals" : 
 			{
+				"i" : 
+				{
+					"alias" : 29,
+					"fields" : 1,
+					"size" : 4,
+					"type" : "i32",
+					"use" : 
+					[
+						"main::i",
+						"main::req"
+					]
+				},
 				"req" : 
 				{
-					"alias" : 34,
+					"alias" : 67,
 					"fields" : 1,
-					"indirect" : null,
+					"indirect" : 
+					[
+						"main::req",
+						"request::LAVA_RETURN_SYM"
+					],
 					"size" : 1,
 					"type" : "i8*"
 				}
@@ -103,19 +103,22 @@
 			{
 				"argc" : 
 				{
-					"alias" : 17,
+					"alias" : 23,
 					"fields" : 1,
 					"size" : 4,
 					"type" : "i32",
-					"use" : null
+					"use" : 
+					[
+						"main::argc"
+					]
 				},
 				"argv" : 
 				{
-					"alias" : 19,
+					"alias" : 25,
 					"fields" : 1,
 					"indirect" : 
 					[
-						"main::req"
+						"main::argv"
 					],
 					"size" : 8,
 					"type" : "i8**"
@@ -132,7 +135,7 @@
 		{
 			"Gro" : null,
 			"Grw" : null,
-			"alias" : 68,
+			"alias" : 41,
 			"calls" : null,
 			"file" : "",
 			"locals" : null,
@@ -148,7 +151,7 @@
 		{
 			"Gro" : null,
 			"Grw" : null,
-			"alias" : 80,
+			"alias" : 93,
 			"calls" : null,
 			"file" : "",
 			"locals" : null,
@@ -163,44 +166,28 @@
 		"request" : 
 		{
 			"Gro" : null,
-			"Grw" : null,
-			"alias" : 41,
+			"Grw" : 
+			[
+				"key",
+				"temp"
+			],
+			"alias" : 71,
 			"calls" : 
 			[
-				"malloc",
-				"strcpy",
-				"printf"
+				"printf",
+				"strcpy"
 			],
 			"file" : "/home/yudi/RPD/lib.c",
 			"locals" : 
 			{
-				"buffer" : 
-				{
-					"alias" : 65,
-					"fields" : 1,
-					"indirect" : 
-					[
-						"request::p"
-					],
-					"size" : 1,
-					"type" : "i8*"
-				},
 				"p" : 
 				{
-					"alias" : 65,
+					"alias" : 123,
 					"fields" : 1,
 					"indirect" : 
 					[
 						"request::p"
 					],
-					"size" : 1,
-					"type" : "i8*"
-				},
-				"password" : 
-				{
-					"alias" : 72,
-					"fields" : 1,
-					"indirect" : null,
 					"size" : 1,
 					"type" : "i8*"
 				}
@@ -209,11 +196,12 @@
 			{
 				"data" : 
 				{
-					"alias" : 34,
+					"alias" : 67,
 					"fields" : 1,
 					"indirect" : 
 					[
-						"request::data"
+						"request::data",
+						"request::p"
 					],
 					"size" : 1,
 					"type" : "i8*"
@@ -230,23 +218,7 @@
 		{
 			"Gro" : null,
 			"Grw" : null,
-			"alias" : 85,
-			"calls" : null,
-			"file" : "",
-			"locals" : null,
-			"params" : null,
-			"ret" : 
-			{
-				"fields" : 1,
-				"size" : 1,
-				"type" : "pointer"
-			}
-		},
-		"strdup" : 
-		{
-			"Gro" : null,
-			"Grw" : null,
-			"alias" : 36,
+			"alias" : 98,
 			"calls" : null,
 			"file" : "",
 			"locals" : null,
@@ -259,5 +231,37 @@
 			}
 		}
 	},
-	"globals" : null
+	"globals" : 
+	{
+		"key" : 
+		{
+			"alias" : 126,
+			"fields" : 10,
+			"file" : "/home/yudi/RPD/lib.c",
+			"indirect" : 
+			[
+				"key",
+				"printf::LAVA_RETURN_SYM",
+				"request::LAVA_RETURN_SYM",
+				"strcpy::LAVA_RETURN_SYM"
+			],
+			"size" : 10,
+			"type" : "[10 x i8]*"
+		},
+		"temp" : 
+		{
+			"alias" : 123,
+			"fields" : 10,
+			"file" : "/home/yudi/RPD/lib.c",
+			"indirect" : 
+			[
+				"printf::LAVA_RETURN_SYM",
+				"request::LAVA_RETURN_SYM",
+				"request::p",
+				"temp"
+			],
+			"size" : 10,
+			"type" : "[10 x i8]*"
+		}
+	}
 }
